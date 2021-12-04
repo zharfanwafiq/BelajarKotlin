@@ -1,9 +1,7 @@
-package com.zharfan.intent
+package com.zharfan
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import com.zharfan.belajarkotlin.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.zharfan.belajarkotlin.databinding.ActivityMoveBinding
 
 class MoveActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.zharfan.intent
+package com.zharfan
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import com.zharfan.belajarkotlin.R
 import com.zharfan.belajarkotlin.databinding.ActivityIntentBinding
-import com.zharfan.belajarkotlin.databinding.ActivityMainBinding
 
 class intentActivity : AppCompatActivity(),View.OnClickListener {
 
