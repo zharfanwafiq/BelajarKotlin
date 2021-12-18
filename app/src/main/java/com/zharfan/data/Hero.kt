@@ -1,4 +1,4 @@
-package com.zharfan
+package com.zharfan.data
 
 import android.provider.ContactsContract
 
