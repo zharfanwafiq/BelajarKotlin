@@ -37,5 +37,14 @@
     <string name="buy">Beli</string>
     <string name="dummy_value">$735</string>
     <string name="dummy_photos">6 photos</string>
+    <string name="tvHeroTitle">Nama Pahlawan</string>
+    <string name="tvHeroDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat.</string>
+    <string name="imgPhoto">Photo</string>
 
+<!--    menu-->
+    <string name="menuList">List</string>
+    <string name="menuGrid">Grid</string>
+    <string name="menuCardView">CardView</string>
 </resources>

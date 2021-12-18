@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgItemPhoto"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="16dp"
+        tools:src="tools:sample/avatars"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHeroName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        tools:text="@string/tvHeroTitle"
+        app:layout_constraintTop_toTopOf="@id/imgItemPhoto"
+        app:layout_constraintStart_toEndOf="@id/imgItemPhoto"/>
+
+    <TextView
+        android:id="@+id/tvHeroDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvHeroName"
+        app:layout_constraintTop_toBottomOf="@id/tvHeroName"
+        tools:text="@string/tvHeroDesc" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

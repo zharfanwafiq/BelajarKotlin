@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BelajarKotlin">
         <activity
-            android:name="com.zharfan.StyleThemeActivity"
+
+            android:name="com.zharfan.ui.activity.RecycleViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
