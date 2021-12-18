@@ -1,9 +1,9 @@
 package com.zharfan.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zharfan.belajarkotlin.R
@@ -18,12 +18,14 @@ class RecycleViewActivity : AppCompatActivity() {
     private lateinit var listHeroAdapter: ListHeroAdapter
     private lateinit var gridHeroAdapter: GridHeroAdapter
     private var listHero : ArrayList<Hero> = arrayListOf()
+    private var title : String = "Mode Grid"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRecycleViewBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        setActionBArTitle(title)
         showData()
     }
 
@@ -64,13 +66,20 @@ class RecycleViewActivity : AppCompatActivity() {
 
     }
 
+    private fun setActionBArTitle(title:String){
+        supportActionBar?.title = title
+    }
+
     private fun setMode(selectedMde: Int){
         when(selectedMde){
             R.id.action_list -> {
+                title = "Mode List"
                 showRecyclerList()
 
             }
             R.id.action_grid -> {
+
+                title ="Mode Grid"
                 showRecyclerGrid()
 
             }
@@ -78,5 +87,6 @@ class RecycleViewActivity : AppCompatActivity() {
 
             }
         }
+        setActionBArTitle(title)
     }
 }
