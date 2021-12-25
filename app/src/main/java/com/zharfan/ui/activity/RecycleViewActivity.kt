@@ -10,6 +10,7 @@ import com.zharfan.belajarkotlin.R
 import com.zharfan.belajarkotlin.databinding.ActivityRecycleViewBinding
 import com.zharfan.data.Hero
 import com.zharfan.data.HeroesData
+import com.zharfan.ui.adapter.CardViewHeroAdapter
 import com.zharfan.ui.adapter.GridHeroAdapter
 import com.zharfan.ui.adapter.ListHeroAdapter
 
@@ -17,6 +18,7 @@ class RecycleViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecycleViewBinding
     private lateinit var listHeroAdapter: ListHeroAdapter
     private lateinit var gridHeroAdapter: GridHeroAdapter
+    private lateinit var cardViewHeroAdapter: CardViewHeroAdapter
     private var listHero : ArrayList<Hero> = arrayListOf()
     private var title : String = "Mode Grid"
 
@@ -33,6 +35,7 @@ class RecycleViewActivity : AppCompatActivity() {
         listHero.addAll(HeroesData.listData)
         showRecyclerList()
         showRecyclerGrid()
+        showRecycleCardView()
     }
 
     private fun showRecyclerList() {
@@ -50,6 +53,16 @@ class RecycleViewActivity : AppCompatActivity() {
             with(rvHero){
                 layoutManager = GridLayoutManager(this@RecycleViewActivity,2)
                 rvHero.adapter = gridHeroAdapter
+            }
+        }
+    }
+
+    private fun showRecycleCardView(){
+        cardViewHeroAdapter = CardViewHeroAdapter(listHero)
+        binding.apply {
+            with(rvHero){
+                layoutManager =LinearLayoutManager(this@RecycleViewActivity)
+                rvHero.adapter =cardViewHeroAdapter
             }
         }
     }
@@ -84,6 +97,9 @@ class RecycleViewActivity : AppCompatActivity() {
 
             }
             R.id.action_cardview -> {
+
+                title ="Mode CardView"
+                showRecycleCardView()
 
             }
         }

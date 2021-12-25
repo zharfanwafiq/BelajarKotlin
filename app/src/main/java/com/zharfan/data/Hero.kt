@@ -8,3 +8,4 @@ data class Hero(
     var photo: Int = 0
 
 )
+
