@@ -42,6 +42,8 @@
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
         ex ea commodo consequat.</string>
     <string name="imgPhoto">Photo</string>
+    <string name="tvFavorite">Favorit</string>
+    <string name="tvShare">Share</string>
 
 <!--    menu-->
     <string name="menuList">List</string>

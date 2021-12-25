@@ -7,8 +7,15 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.zharfan.belajarkotlin.databinding.ItemGridHeroBinding
 import com.zharfan.data.Hero
+import com.zharfan.ui.helper.OnItemClickCallback
 
 class GridHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<GridHeroAdapter.ViewHolder>(){
+
+    private lateinit var onItemClickCallback : OnItemClickCallback
+
+    fun  setOnItemClickCallback(onItemClickCallback : OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridHeroAdapter.ViewHolder {
         val view = ItemGridHeroBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -16,14 +23,14 @@ class GridHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: GridHeroAdapter.ViewHolder, position: Int) {
-        holder.bind(listHero[position])
+        val pos = listHero[position]
+        holder.bind(pos)
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(pos)
+        }
     }
 
     override fun getItemCount(): Int = listHero.size
-
-
-
-
 
     inner class ViewHolder(private val binding: ItemGridHeroBinding):
             RecyclerView.ViewHolder(binding.root){
@@ -38,4 +45,6 @@ class GridHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.Adap
                     }
                 }
             }
+
+
 }

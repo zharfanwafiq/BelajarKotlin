@@ -3,6 +3,7 @@ package com.zharfan.ui.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,15 +11,18 @@ import com.zharfan.belajarkotlin.R
 import com.zharfan.belajarkotlin.databinding.ActivityRecycleViewBinding
 import com.zharfan.data.Hero
 import com.zharfan.data.HeroesData
+import com.zharfan.ui.adapter.CardViewHeroAdapter
 import com.zharfan.ui.adapter.GridHeroAdapter
 import com.zharfan.ui.adapter.ListHeroAdapter
+import com.zharfan.ui.helper.OnItemClickCallback
 
 class RecycleViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecycleViewBinding
     private lateinit var listHeroAdapter: ListHeroAdapter
     private lateinit var gridHeroAdapter: GridHeroAdapter
+    private lateinit var cardViewHeroAdapter: CardViewHeroAdapter
     private var listHero : ArrayList<Hero> = arrayListOf()
-    private var title : String = "Mode Grid"
+    private var title : String = "Mode CardView"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRecycleViewBinding.inflate(layoutInflater)
@@ -33,6 +37,7 @@ class RecycleViewActivity : AppCompatActivity() {
         listHero.addAll(HeroesData.listData)
         showRecyclerList()
         showRecyclerGrid()
+        showRecycleCardView()
     }
 
     private fun showRecyclerList() {
@@ -42,6 +47,11 @@ class RecycleViewActivity : AppCompatActivity() {
                     layoutManager = LinearLayoutManager(this@RecycleViewActivity)
                     rvHero.adapter = listHeroAdapter
                 }
+                listHeroAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                    override fun onItemClicked(data: Hero) {
+                        showSelectedHero(data)
+                    }
+                })
             }
     }
     private fun showRecyclerGrid() {
@@ -51,7 +61,31 @@ class RecycleViewActivity : AppCompatActivity() {
                 layoutManager = GridLayoutManager(this@RecycleViewActivity,2)
                 rvHero.adapter = gridHeroAdapter
             }
+            gridHeroAdapter.setOnItemClickCallback(object :OnItemClickCallback{
+                override fun onItemClicked(data: Hero) {
+                    showSelectedHero(data)
+                }
+            })
         }
+    }
+
+    private fun showRecycleCardView(){
+        cardViewHeroAdapter = CardViewHeroAdapter(listHero)
+        binding.apply {
+            with(rvHero){
+                layoutManager =LinearLayoutManager(this@RecycleViewActivity)
+                rvHero.adapter =cardViewHeroAdapter
+            }
+            cardViewHeroAdapter.setOnItemClickCallback(object :OnItemClickCallback{
+                override fun onItemClicked(data: Hero) {
+                    showSelectedHero(data)
+                }
+            })
+        }
+    }
+
+    private fun showSelectedHero(hero: Hero){
+        Toast.makeText(this, "Kamu memilih ${hero.name}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -84,6 +118,9 @@ class RecycleViewActivity : AppCompatActivity() {
 
             }
             R.id.action_cardview -> {
+
+                title ="Mode CardView"
+                showRecycleCardView()
 
             }
         }
